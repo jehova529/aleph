@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_complex_object">
+    <sys_complex_object action="INSERT_OR_UPDATE">
+        <label/>
+        <name>TextPromptItem</name>
+        <namespace>AlephAlphaAPI1130</namespace>
+        <scope_name>985ca92c87e2f91080de0d87cebb3564</scope_name>
+        <serialized_content>{"AlephAlphaAPI1130:TextPromptItem":{"controls":[{"controls":{"token_overlap":"String","token_overlap.$field_facets":{"SimpleMapFacet":"{\"default_value\":\"partial\"}","SimpleChoiceFacet":"{\"complex_choice_map_key$\":{},\"choice_map_key$\":{\"complete\":\"complete\",\"partial\":\"partial\"}}"},"length":"Integer","length.$field_facets":{"SimpleMapFacet":"{\"mandatory\":\"true\"}"},"start":"Integer","start.$field_facets":{"SimpleMapFacet":"{\"mandatory\":\"true\"}"},"factor":"Number","factor.$field_facets":{"SimpleMapFacet":"{\"mandatory\":\"true\"}"}}}],"data":"String","data.$field_facets":{"SimpleMapFacet":"{\"mandatory\":\"true\"}"},"type":"String","type.$field_facets":{"SimpleMapFacet":"{\"mandatory\":\"true\"}","SimpleChoiceFacet":"{\"complex_choice_map_key$\":{},\"choice_map_key$\":{\"text\":\"text\"}}"}}}</serialized_content>
+        <sys_class_name>sys_complex_object</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-11-13 12:11:06</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>340ea9ac87e2f91080de0d87cebb3588</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>TextPromptItem</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Aleph Alpha Spoke" source="x_snc_aleph_alpha">985ca92c87e2f91080de0d87cebb3564</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Aleph Alpha Spoke">985ca92c87e2f91080de0d87cebb3564</sys_scope>
+        <sys_update_name>sys_complex_object_340ea9ac87e2f91080de0d87cebb3588</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-11-13 12:11:06</sys_updated_on>
+        <type>complex_object_schema</type>
+    </sys_complex_object>
+</record_update>

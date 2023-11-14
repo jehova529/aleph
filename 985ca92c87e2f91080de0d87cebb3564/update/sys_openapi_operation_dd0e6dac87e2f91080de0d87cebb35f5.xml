@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_openapi_operation">
+    <sys_openapi_operation action="INSERT_OR_UPDATE">
+        <complex_object_ids>b80e6dac87e2f91080de0d87cebb35b3,4d0e6dac87e2f91080de0d87cebb35d5,340e6dac87e2f91080de0d87cebb359c,490e6dac87e2f91080de0d87cebb35be,010e6dac87e2f91080de0d87cebb35d4,0d0e6dac87e2f91080de0d87cebb35df,b00e6dac87e2f91080de0d87cebb359e,490e6dac87e2f91080de0d87cebb35e1,4d0e6dac87e2f91080de0d87cebb35cc,490e6dac87e2f91080de0d87cebb35d7,340ea9ac87e2f91080de0d87cebb3588,f40e6dac87e2f91080de0d87cebb35b5,c10e6dac87e2f91080de0d87cebb35d2,f40e6dac87e2f91080de0d87cebb359a,cd0e6dac87e2f91080de0d87cebb35ba,fc0e6dac87e2f91080de0d87cebb359f,700e6dac87e2f91080de0d87cebb35b9,0d0e6dac87e2f91080de0d87cebb35bc,3c0e6dac87e2f91080de0d87cebb35a1,890e6dac87e2f91080de0d87cebb35ce,340e6dac87e2f91080de0d87cebb35b7,780e6dac87e2f91080de0d87cebb35a3,b40e6dac87e2f91080de0d87cebb35a5,410e6dac87e2f91080de0d87cebb35dc,c50e6dac87e2f91080de0d87cebb35d0,410e6dac87e2f91080de0d87cebb35e7</complex_object_ids>
+        <deprecated>false</deprecated>
+        <http_method>post</http_method>
+        <name>Tokenize</name>
+        <openapi display_value="Aleph Alpha API - 1.13.0">b40ea9ac87e2f91080de0d87cebb3585</openapi>
+        <path>/tokenize</path>
+        <serialized_operation>{"fName":"Tokenize","fOperationId":"tokenize","fDescription":"Tokenize a prompt for a specific model. To obtain a valid model, use `GET` `/models_available`.","fPath":"/tokenize","fHttpMethod":"POST","fDeprecated":false,"fRequest":{"fRequired":true,"fContents":[{"fMediaType":"application/json","fSchema":{"fName":"body_5863933629","fReferencedName":"#/components/schemas/TokenizationRequest","fExclusiveMaximum":false,"fExclusiveMinimum":false,"fUniqueItems":false,"fRequired":[],"fEnum":[],"fProperties":[],"fOneOf":[],"fNullable":false,"fReadOnly":false,"fWriteOnly":false,"fDeprecated":false,"fGlideType":"object"}}]},"fResponses":[{"fStatusCode":"200","fDescription":"OK","fContents":[{"fMediaType":"application/json","fSchema":{"fName":"output5341271432","fReferencedName":"#/components/schemas/TokenizationResponse","fExclusiveMaximum":false,"fExclusiveMinimum":false,"fUniqueItems":false,"fRequired":[],"fEnum":[],"fProperties":[],"fOneOf":[],"fNullable":false,"fReadOnly":false,"fWriteOnly":false,"fDeprecated":false,"fGlideType":"object"}}],"fHeaders":[]}],"fParameters":[]}</serialized_operation>
+        <sys_class_name>sys_openapi_operation</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-11-13 12:11:08</sys_created_on>
+        <sys_id>dd0e6dac87e2f91080de0d87cebb35f5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Tokenize</sys_name>
+        <sys_package display_value="Aleph Alpha Spoke" source="x_snc_aleph_alpha">985ca92c87e2f91080de0d87cebb3564</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Aleph Alpha Spoke">985ca92c87e2f91080de0d87cebb3564</sys_scope>
+        <sys_update_name>sys_openapi_operation_dd0e6dac87e2f91080de0d87cebb35f5</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-11-13 12:11:08</sys_updated_on>
+    </sys_openapi_operation>
+</record_update>
