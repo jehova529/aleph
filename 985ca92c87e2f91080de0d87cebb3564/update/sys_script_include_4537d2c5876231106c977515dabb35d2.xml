@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_snc_aleph_alpha.AlephAlphaUtils</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>AlephAlphaUtils</name>
+        <script><![CDATA[var AlephAlphaUtils = Class.create();
+AlephAlphaUtils.prototype = {
+    initialize: function() {},
+
+    /**
+      Params : json object
+      Functionality : Traverses through all key-value pairs part of the inputs and strips the value of any whitespace which are added inadverently around the values.
+      Return : updated json object.
+    */
+    trimInputs: function(inputs) {
+        for (var key in inputs) {
+            if (inputs[key] && typeof inputs[key] == 'string') {
+                inputs[key] = inputs[key].trim();
+            }
+        }
+        return inputs;
+    },
+
+    /**
+      Params : Input JSON Object
+      Functionality : Returns true if the input is Valid JSON, Returns false if the input is not a valid JSON.
+      Return : true/false.
+    */
+    isValidJSON: function(inputObject) {
+        if (gs.nil(inputObject))
+            return false;
+        try {
+            JSON.parse(inputObject);
+        } catch (e) {
+            return false;
+        }
+        return true;
+    },
+
+    /**
+      Params : json object
+      Functionality : Traverses through all mandatory inputs and check if there are any empty values.
+    */
+    validateMandatoryInputs: function(mandatoryInputs) {
+        var emptyInputs = "",
+            emptyInputsCount = 0;
+        mandatoryInputs.forEach(function(mandatoryInput) {
+            if (mandatoryInput.type === 'string') {
+                if (gs.nil(mandatoryInput.value)) {
+                    if (emptyInputsCount == 0)
+                        emptyInputs += mandatoryInput.input_label;
+                    else
+                        emptyInputs += ", " + mandatoryInput.input_label;
+                    emptyInputsCount++;
+                }
+            } else if (mandatoryInput.type === 'integer') {
+                if (!(mandatoryInput.value) || (((mandatoryInput.value).toString()).trim() === "")) {
+                    if (emptyInputsCount == 0)
+                        emptyInputs += mandatoryInput.input_label;
+                    else
+                        emptyInputs += ", " + mandatoryInput.input_label;
+                    emptyInputsCount++;
+                }
+            } else if (mandatoryInput.type === 'object') {
+                if (!(mandatoryInput.value) || (gs.nil(mandatoryInput.value.author) && gs.nil(mandatoryInput.value.content))) {
+                    if (emptyInputsCount == 0)
+                        emptyInputs += mandatoryInput.input_label;
+                    else
+                        emptyInputs += ", " + mandatoryInput.input_label;
+                    emptyInputsCount++;
+                }
+            }
+        });
+
+        if (emptyInputsCount > 0) {
+            throw new Error("Following mandatory input(s) are not provided : " + emptyInputs);
+        }
+    },
+
+    /**
+      Params : json object
+      Functionality : Traverses through all inputs and validates them.
+    */
+    validateAndParseInputs: function(inputs) {
+
+        var encodedfields = inputs.fields;
+        delete inputs['fields'];
+        for (var key in inputs) {
+            var value = inputs[key];
+            if (gs.nil(value) || (Array.isArray(value) && (value.length == 0 || value[0] == '')))
+                delete inputs[key];
+            else {
+                value = this.parseValue(key, value);
+                if (!gs.nil(value))
+                    inputs[key] = value;
+            }
+        }
+        var fields = encodedfields.split('^').filter(Boolean);
+        var self = this;
+        fields.forEach(function(pair) {
+            var parts = pair.split('=');
+            var key = parts[0];
+            var value = parts[1];
+            value = self.parseValue(key, value);
+            if (!gs.nil(value))
+                inputs[key] = value;
+        });
+        return inputs;
+    },
+
+    /**
+      Params : key value pairs
+      Functionality : parses the value and returns it.
+    */
+    parseValue: function(key, value) {
+        var integerFields = ['maximum_tokens', 'minimum_tokens', 'top_k', 'sequence_penalty_min_length', 'best_of', 'n', 'logprobs'];
+        var numberFields = ['temperature', 'top_p', 'presence_penalty', 'frequency_penalty', 'sequence_penalty', 'contextual_control_threshold'];
+        var stringArrayFields = ['stop_sequences', 'penalty_exceptions', 'completion_bias_inclusion', 'completion_bias_exclusion'];
+        var booleanFields = ['echo', 'repetition_penalties_include_prompt', 'repetition_penalties_include_completion',
+            'use_multiplicative_presence_penalty', 'use_multiplicative_frequency_penalty', 'use_multiplicative_sequence_penalty',
+            'penalty_exceptions_include_stop_sequences', 'tokens', 'raw_completion', 'disable_optimizations', 'nice',
+            'completion_bias_inclusion_first_token_only', 'completion_bias_exclusion_first_token_only', 'control_log_additive'
+        ];
+
+        if (gs.nil(value)) {
+            return null;
+        } else if (integerFields.indexOf(key) != -1) {
+            value = parseInt(value);
+            if (isNaN(value) || value > 2147483647 || value < -2147483648)
+                throw new Error('Invalid value for ' + this.getLabel(key) + ' specified. Must be a valid integer value.');
+            return value;
+        } else if (numberFields.indexOf(key) != -1) {
+            value = parseFloat(value);
+            if (isNaN(value))
+                throw new Error('Invalid value for ' + this.getLabel(key) + ' specified. Must be a valid number.');
+            return value;
+        } else if (stringArrayFields.indexOf(key) != -1) {
+            if (value.startsWith('[') && value.endsWith(']'))
+                return JSON.parse(value);
+        } else if (booleanFields.indexOf(key) != -1) {
+            if (value === 'true' || value === 'false')
+                return (value === 'true');
+        } else return value;
+    },
+
+    /**
+      Params : json object
+      Functionality : returns error messages based on the response body.
+    */
+    getErrorMessage: function(status, responseBody) {
+        if (this.isValidJSON(responseBody)) {
+            responseBody = JSON.parse(responseBody);
+            if (!gs.nil(responseBody.error))
+                return responseBody.error;
+        }
+        if (status == '401')
+            return 'Invalid API Key.';
+        else if (status == '403')
+            return 'Forbidden request, check your permissions.';
+        else if (status == '400') {
+            return 'Bad Request, check your inputs.';
+        } else
+            return 'Unkown Error';
+    },
+
+	/**
+      Params : name
+      Functionality : converts the internal name to a label.
+      Return : label
+    */
+    getLabel: function(name) {
+        var i, words = name.split('_');
+        for (i = 0; i < words.length; i++) {
+            words[i] = words[i].charAt(0).toUpperCase() + words[i].slice(1);
+        }
+        return words.join(' ');
+    },
+
+    type: 'AlephAlphaUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>jehova.honey@snc</sys_created_by>
+        <sys_created_on>2023-11-15 04:50:57</sys_created_on>
+        <sys_id>4537d2c5876231106c977515dabb35d2</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>AlephAlphaUtils</sys_name>
+        <sys_package display_value="Aleph Alpha Spoke" source="x_snc_aleph_alpha">985ca92c87e2f91080de0d87cebb3564</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Aleph Alpha Spoke">985ca92c87e2f91080de0d87cebb3564</sys_scope>
+        <sys_update_name>sys_script_include_4537d2c5876231106c977515dabb35d2</sys_update_name>
+        <sys_updated_by>jehova.honey@snc</sys_updated_by>
+        <sys_updated_on>2023-11-15 07:21:18</sys_updated_on>
+    </sys_script_include>
+</record_update>

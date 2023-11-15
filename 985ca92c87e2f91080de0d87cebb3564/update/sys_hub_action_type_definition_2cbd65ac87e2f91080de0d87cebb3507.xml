@@ -11,7 +11,7 @@
         <copied_from/>
         <copied_from_name/>
         <description/>
-        <ih_action>true</ih_action>
+        <ih_action>false</ih_action>
         <internal_name>completions</internal_name>
         <label_cache>[{"name":"{{action.nice}}","label":"action➛nice","type":"action","ref":"","reference_display":"","base_type":"boolean","parent_table_name":"","column_name":"","choices":null,"attributes":{}},{"name":"{{action.completionrequest}}","label":"action➛CompletionRequest","type":"action","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{}},{"name":"{{action.model}}","label":"action➛Model","type":"action","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{"uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"string","uiUniqueId":"739c9173-4d9c-4a65-b127-76888e9c4f18"}},{"name":"{{action.prompt}}","label":"action➛Prompt","type":"action","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{"uiTypeLabel":"String","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"string","uiUniqueId":"bec94b65-3dc5-42f2-963e-d4cd266e2ad1"}},{"name":"{{action.maximum_tokens}}","label":"action➛Maximum Tokens","type":"action","ref":"","reference_display":"","base_type":"integer","parent_table_name":"","column_name":"","choices":null,"attributes":{"uiTypeLabel":"Integer","element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"integer","uiUniqueId":"2d3a2382-89bb-452b-ba1b-bed456f668ab"}},{"name":"{{step[98644b5c-b089-4716-891b-6a3ae51e76d5].sn_auth_token}}","label":"step➛Completions➛Credential Value","type":"step","ref":"","reference_display":"","base_type":"password2","parent_table_name":"","column_name":"","choices":null,"attributes":{"element_mapping_provider":"com.glide.flow_design.action.data.FlowDesignVariableMapper","uiType":"password2","isLocal":"true"}},{"name":"{{step[98644b5c-b089-4716-891b-6a3ae51e76d5].response_body}}","label":"step➛Completions➛Response Body","type":"step","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{"hidden_for":"DATASTREAM"}},{"name":"{{step[98644b5c-b089-4716-891b-6a3ae51e76d5].status_code}}","label":"step➛Completions➛Status Code","type":"step","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{"hidden_for":"DATASTREAM"}},{"name":"{{step[6616d27d-2c0c-4249-806a-b412b230662b].completions}}","label":"step➛Post Processing Step➛Completions","type":"step","ref":"","reference_display":"","base_type":"array.object","parent_table_name":"","column_name":"","choices":null,"attributes":{"sourceId":"","sourceUiUniqueId":"","sourceType":""}},{"name":"{{step[6616d27d-2c0c-4249-806a-b412b230662b].model_version}}","label":"step➛Post Processing Step➛Model Version","type":"step","ref":"","reference_display":"","base_type":"string","parent_table_name":"","column_name":"","choices":null,"attributes":{"sourceId":"","sourceUiUniqueId":"","sourceType":""}}]</label_cache>
         <master_snapshot>9641b5a08726f91080de0d87cebb358e</master_snapshot>
@@ -20,22 +20,22 @@
         <outputs/>
         <outputs/>
         <pre_compiled>false</pre_compiled>
-        <state>published</state>
+        <state>draft</state>
         <sys_class_name>sys_hub_action_type_definition</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-11-13 12:09:43</sys_created_on>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>2cbd65ac87e2f91080de0d87cebb3507</sys_id>
-        <sys_mod_count>20</sys_mod_count>
+        <sys_mod_count>24</sys_mod_count>
         <sys_name>Completions</sys_name>
         <sys_overrides/>
         <sys_package display_value="Aleph Alpha Spoke" source="x_snc_aleph_alpha">985ca92c87e2f91080de0d87cebb3564</sys_package>
         <sys_policy/>
         <sys_scope display_value="Aleph Alpha Spoke">985ca92c87e2f91080de0d87cebb3564</sys_scope>
         <sys_update_name>sys_hub_action_type_definition_2cbd65ac87e2f91080de0d87cebb3507</sys_update_name>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-11-13 12:28:54</sys_updated_on>
+        <sys_updated_by>jehova.honey@snc</sys_updated_by>
+        <sys_updated_on>2023-11-14 16:24:19</sys_updated_on>
         <system_level>false</system_level>
         <type/>
     </sys_hub_action_type_definition>
@@ -1127,14 +1127,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-11-13 12:19:26</sys_created_on>
         <sys_id>b2efed208726f91080de0d87cebb35f0</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="Aleph Alpha Spoke">985ca92c87e2f91080de0d87cebb3564</sys_scope>
         <sys_update_name/>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-11-13 12:28:45</sys_updated_on>
+        <sys_updated_by>jehova.honey@snc</sys_updated_by>
+        <sys_updated_on>2023-11-14 16:24:17</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -1211,14 +1211,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-11-13 12:19:26</sys_created_on>
         <sys_id>b6efed208726f91080de0d87cebb35f4</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="Aleph Alpha Spoke">985ca92c87e2f91080de0d87cebb3564</sys_scope>
         <sys_update_name/>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-11-13 12:28:46</sys_updated_on>
+        <sys_updated_by>jehova.honey@snc</sys_updated_by>
+        <sys_updated_on>2023-11-14 16:24:17</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -1295,14 +1295,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-11-13 12:19:26</sys_created_on>
         <sys_id>baefed208726f91080de0d87cebb35f7</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="Aleph Alpha Spoke">985ca92c87e2f91080de0d87cebb3564</sys_scope>
         <sys_update_name/>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-11-13 12:28:46</sys_updated_on>
+        <sys_updated_by>jehova.honey@snc</sys_updated_by>
+        <sys_updated_on>2023-11-14 16:24:17</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
@@ -1556,14 +1556,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-11-13 12:19:28</sys_created_on>
         <sys_id>57ef21608726f91080de0d87cebb354d</sys_id>
-        <sys_mod_count>9</sys_mod_count>
+        <sys_mod_count>13</sys_mod_count>
         <sys_name/>
         <sys_package/>
         <sys_policy/>
         <sys_scope display_value="Aleph Alpha Spoke">985ca92c87e2f91080de0d87cebb3564</sys_scope>
         <sys_update_name/>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-11-13 12:28:47</sys_updated_on>
+        <sys_updated_by>jehova.honey@snc</sys_updated_by>
+        <sys_updated_on>2023-11-14 16:24:19</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>
